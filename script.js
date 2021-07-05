@@ -1,10 +1,18 @@
-const FEE_GATE = 59
-let bid_price = document.getElementById("userPrice").value;
+const FEE_GATE = 59;
+let bid_price = 0
 let final_price = 0
+let sales_tax_amount = 0
 let sales_tax = 0.03
 let fee_payment_method = 0
 let fee_internet_bid = 0
 let total_fees = 0
+
+// HTML ELEMENTS // 
+let display_final = document.getElementById("finalPriceId");
+let display_bidPrice = document.getElementById("bidPrice");
+let display_salesFee = document.getElementById("salesFee");
+let display_liveBidFee = document.getElementById("liveBidFee");
+let display_tax = document.getElementById("salesTax");
 
 const BID_FEES = [
   25, 25,
@@ -71,7 +79,7 @@ const PRICES = [
 ];
 
 
-function get_payment_fee(bid_price) {
+function get_payment_fee() {
   for (var i = 0; i < BID_FEES.length; i++) {
     if (bid_price >= PRICES[i] && bid_price < PRICES[i + 1]) {
       fee_payment_method = BID_FEES[i];
@@ -81,26 +89,63 @@ function get_payment_fee(bid_price) {
   if (bid_price >= 5000) {
     fee_payment_method = bid_price * .15
   }
+
+  return fee_payment_method
 }
 
-function calculate_final_price(bid_price) {
-  get_payment_fee(bid_price)
-  // console.log(fee_payment_method)
-  // console.log(bid_price)
+function calculate_final_price() {
+  bid_price = document.getElementById("userPrice").value;
+  bid_price = parseInt(bid_price)
+  get_payment_fee()
+
   total_fees = FEE_GATE + fee_payment_method + fee_internet_bid + bid_price;
-  // console.log(total_fees)
-  final_price = (total_fees * .03) + total_fees;
+  console.log("FEE_GATE=" + FEE_GATE)
+  console.log("fee_payment_method=" +fee_payment_method)
+  console.log("fee_internet_bid="+fee_internet_bid)
+  console.log("bid price=" + bid_price)
+
+  console.log("TOTAL = " + total_fees)
+  sales_tax_amount = total_fees * sales_tax
+  final_price = total_fees + sales_tax_amount
   final_price = (Math.round(final_price * 100) / 100).toFixed(2);
+
+  console.log(final_price)
+
+  updateFields()
   return final_price;
 }
 
-function print(){
-
-  alert(bid_price + " " + final_price)
+function isNumber(field){
+  if(isNaN(field)){
+    return true;
+  } 
 }
 
-document.getElementById("calcBtn").addEventListener("click", function(){
-   bid_price = document.getElementById("userPrice").value;
-  final_price = calculate_final_price(bid_price)
-   print()
-});
+function updateFields(){
+
+  if(!isNumber(final_price)){
+    display_final.innerHTML = "$" + final_price
+  }
+
+  if(!isNumber(bid_price)){
+    display_bidPrice.innerHTML = "$" + bid_price
+  }
+
+  if(!isNumber(fee_payment_method)){
+    display_salesFee.innerHTML = "$" + fee_payment_method
+  }
+
+  if(!isNumber(fee_internet_bid)){
+    display_liveBidFee.innerHTML = "$" + fee_internet_bid
+  }
+
+  if(!isNumber(sales_tax_amount)){
+    display_tax.innerHTML = "$" + sales_tax_amount
+  }
+  
+}
+
+// document.getElementById("calcBtn").addEventListener("click", function(){
+//    bid_price = document.getElementById("userPrice").value;
+
+// });

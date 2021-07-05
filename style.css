@@ -1,18 +1,31 @@
 body {
-    background-color:#0d5db8;
+    background-color:#317fd8;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: black;
     text-align: center;
+    margin: 0;
+    padding: 0
 }
-
 
 h1 {
     text-align: center;
     color: lightblue;
+    background-color: rgb(14, 14, 112);
+    padding: 15px;
+    /*position: relative;
+    margin-top: -10px;
+    width: 100%; */
+    height: 40px;
+    margin: 0 auto;
+    font-size: 35px;
 }
 
 h2 {
     text-align: center;
+    font-size: 28px;
+    padding: 0px;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 
 .calc_container {
@@ -20,11 +33,14 @@ h2 {
     color: black;
     position: relative;
     font-size: 25px;
-    padding: 15px;
+    margin-top: 15px;
+    padding: 10px;
     height: fit-content;
     width: fit-content;
-    border-radius: 20%;
+    /* border-radius: 20%; */
+    border-style: solid;
     margin: auto;
+    margin-top: 20px;
 }
 
 input {
@@ -34,25 +50,32 @@ input {
     border-color: black solid;
 }
 
-
-.info-sec {
-    background-color:lightblue;
+.charge_breakdown {
     position: relative;
+    background-color:lightblue;
+    border-style: solid;
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px;
     margin: auto;
-    width: 550px;
+    margin-top: 20px;
 
 }
 
 table {
+    position: relative;
     background-color: #0d5db8;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 5px;
     position: relative;
     border-radius: 10%;
     color: lightblue;
-    margin-top: 15px;
-    margin-bottom: 100px;
+    /* margin-top: 5px; */
+    margin-bottom: 10px;
+    font-size: 25px;
 
 }
 
@@ -62,8 +85,7 @@ table th {
 
 table td {
     border: 1px solid lightblue;
-    padding: 4px 8px;
-   
+    /* padding: 4px 8px; */
 }
 
 .displayPrice {
@@ -73,17 +95,18 @@ table td {
     font-size: 32px;
     color: black;
     width: fit-content;
-    
+    border-style: solid;
+    /* font-weight: 100; */
+    position: relative;
 
 }
 
 #calcBtn{
     background-color: #0d5db8;
-    color: lightblue;
-    padding: 1%;
+    font-size: large;
+    color: rgb(255, 255, 255);
+    padding: 3%;
     margin-top: 15px;
     position: relative;
     border-radius: 0in;
-
-
 }
