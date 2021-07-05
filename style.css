@@ -1,0 +1,89 @@
+body {
+    background-color:#0d5db8;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+
+h1 {
+    text-align: center;
+    color: lightblue;
+}
+
+h2 {
+    text-align: center;
+}
+
+.calc_container {
+    background-color: lightblue;
+    color: black;
+    position: relative;
+    font-size: 25px;
+    padding: 15px;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 20%;
+    margin: auto;
+}
+
+input {
+    background-color: rgb(235, 228, 228);
+    padding: 15px;
+    border: 15px;
+    border-color: black solid;
+}
+
+
+.info-sec {
+    background-color:lightblue;
+    position: relative;
+    margin: auto;
+    width: 550px;
+
+}
+
+table {
+    background-color: #0d5db8;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 10%;
+    color: lightblue;
+    margin-top: 15px;
+    margin-bottom: 100px;
+
+}
+
+table th {
+    text-align: left;
+}
+
+table td {
+    border: 1px solid lightblue;
+    padding: 4px 8px;
+   
+}
+
+.displayPrice {
+    background-color: lightblue;
+    padding: 15px;
+    margin: auto;
+    font-size: 32px;
+    color: black;
+    width: fit-content;
+    
+
+}
+
+#calcBtn{
+    background-color: #0d5db8;
+    color: lightblue;
+    padding: 1%;
+    margin-top: 15px;
+    position: relative;
+    border-radius: 0in;
+
+
+}
