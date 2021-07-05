@@ -1,5 +1,5 @@
 const FEE_GATE = 59
-let bid_price = 5000
+let bid_price = document.getElementById("userPrice").value;
 let final_price = 0
 let sales_tax = 0.03
 let fee_payment_method = 0
@@ -71,25 +71,36 @@ const PRICES = [
 ];
 
 
-for (var i = 0; i < BID_FEES.length; i++) {
-  if (bid_price >= PRICES[i] && bid_price < PRICES[i + 1]) {
-    fee_payment_method = BID_FEES[i];
+function get_payment_fee(bid_price) {
+  for (var i = 0; i < BID_FEES.length; i++) {
+    if (bid_price >= PRICES[i] && bid_price < PRICES[i + 1]) {
+      fee_payment_method = BID_FEES[i];
+    }
+  }
+
+  if (bid_price >= 5000) {
+    fee_payment_method = bid_price * .15
   }
 }
 
-if (bid_price >= 5000){
-  fee_payment_method = bid_price * .15
-}
-
-
 function calculate_final_price(bid_price) {
-  console.log(fee_payment_method)
-  console.log(bid_price)
+  get_payment_fee(bid_price)
+  // console.log(fee_payment_method)
+  // console.log(bid_price)
   total_fees = FEE_GATE + fee_payment_method + fee_internet_bid + bid_price;
-  console.log(total_fees)
+  // console.log(total_fees)
   final_price = (total_fees * .03) + total_fees;
+  final_price = (Math.round(final_price * 100) / 100).toFixed(2);
   return final_price;
 }
 
-final_price = calculate_final_price(bid_price)
-console.log(final_price)
+function print(){
+
+  alert(bid_price + " " + final_price)
+}
+
+document.getElementById("calcBtn").addEventListener("click", function(){
+   bid_price = document.getElementById("userPrice").value;
+  final_price = calculate_final_price(bid_price)
+   print()
+});
