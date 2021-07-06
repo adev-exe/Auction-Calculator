@@ -2,7 +2,7 @@ const FEE_GATE = 59;
 let bid_price = 0
 let final_price = 0
 let sales_tax_amount = 0
-let sales_tax = 0.03
+let sales_tax = 0
 let fee_payment_method = 0
 let fee_internet_bid = 0
 let total_fees = 0
@@ -13,6 +13,7 @@ let display_bidPrice = document.getElementById("bidPrice");
 let display_salesFee = document.getElementById("salesFee");
 let display_liveBidFee = document.getElementById("liveBidFee");
 let display_tax = document.getElementById("salesTax");
+
 
 const BID_FEES = [
     25, 25,
@@ -90,14 +91,45 @@ function get_payment_fee() {
         fee_payment_method = bid_price * .15
     }
 
-    return fee_payment_method
+    if (bid_price >= 100 & bid_price <= 499.99) {
+        fee_internet_bid = 29
+    }
+    else if (bid_price >= 500 & bid_price <= 999.99) {
+        fee_internet_bid = 39
+    }
+    else if (bid_price >= 1000 & bid_price <= 1499.99) {
+        fee_internet_bid = 49
+    }
+    else if (bid_price >= 1500 & bid_price <= 1999.99) {
+        fee_internet_bid = 59
+    }
+    else if (bid_price >= 2000 & bid_price <= 3999.99) {
+        fee_internet_bid = 69
+    }
+    else if (bid_price >= 4000) {
+        fee_internet_bid = 79
+    }
+    else {
+        fee_internet_bid = 0
+    }
+
 }
 
 function calculate_final_price() {
     resetCalc()
 
-    bid_price = document.getElementById("userPrice").value;
+    bid_price = document.getElementById("userPrice").value
     bid_price = parseInt(bid_price)
+
+    sales_tax = document.getElementById("sale-tax").value
+
+    if (sales_tax == 0) {
+        sales_tax = .03
+    }
+    else {
+        sales_tax = parseInt(sales_tax)
+        sales_tax = sales_tax / 100
+    }
 
     get_payment_fee()
 
@@ -129,7 +161,7 @@ function isNumber(field) {
 function resetCalc() {
     final_price = 0
     sales_tax_amount = 0
-    sales_tax = 0.03
+    sales_tax = 0
     fee_payment_method = 0
     fee_internet_bid = 0
     total_fees = 0
